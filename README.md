@@ -1,7 +1,10 @@
 # Laboratorio 4 de señales - Variabilidad de la Frecuencia Cardiaca usando la Transformada Wavelet
 
 ## Introducción.
-Para este laboratorio, se revisan algunos aspectos básicos como la actividad que tiene el corazón al realizar ejercicio para la toma de datos. Ademas se hizo un analisis estadistico en la señal al hacer 
+
+En el presente laboratorio, se aborda la variabilidad de la frecuencia cardíaca (HRV) como un indicador crucial de la salud cardiovascular y la respuesta del sistema nervioso autónomo ante diferentes estímulos, como el ejercicio y el reposo. A través de un análisis estadístico detallado de los datos obtenidos durante un periodo de actividad física moderada, se explora cómo la actividad simpática y parasimpática del organismo influye en la frecuencia y fuerza de los latidos cardíacos. Este estudio no solo proporciona una comprensión de la dinámica del ritmo cardíaco, sino que también pone de manifiesto la importancia de la HRV como herramienta diagnóstica en contextos clínicos.
+
+Además, se emplea la transformada wavelet, una técnica avanzada de análisis de señales, para descomponer la señal electrocardiográfica en sus componentes de frecuencia y tiempo. A través de este enfoque, se identifican patrones en la variabilidad de la frecuencia cardíaca que reflejan las fluctuaciones inherentes al funcionamiento del sistema nervioso autónomo. La elección de la wavelet madre, específicamente la wavelet Morlet, permite un análisis preciso de las bandas de baja y alta frecuencia, proporcionando información valiosa sobre el estado fisiológico del individuo durante la adquisición de la señal. Este enfoque integral combina conceptos teóricos y prácticos para entender mejor la relación entre el ejercicio y la respuesta cardiovascular.
 
 ## Conceptos principales para tener en cuenta.
 
@@ -71,6 +74,9 @@ En el análisis de señales biológicas, se utilizan distintos tipos de wavelets
 ## Proceso de la señal cardiaca utilizada.
 
 ###  Diagrama de flujo.
+
+![image](https://github.com/user-attachments/assets/8b83bbfd-c55d-40ce-98a4-5641ab76f710)
+
 
 ### Adquisición de la señal.
 
