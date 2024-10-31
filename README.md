@@ -136,11 +136,17 @@ En el caso de las señales ECG, este filtro que opera entre 20 Hz y 450 Hz es ú
 
 
 ### Análisis en la banda de baja frecuencia y en la banda de alta frecuencia.
-Se realiza el análisis tanto en la banda de baja frecuencia como en la banda de alta frecuencia. Se describe críticamente cómo varían las frecuencias a lo largo del tiempo, detallando si hay cambios en la potencia espectral en ambos casos.
 
-Discutir cómo los cambios en la potencia en las bandas de baja y alta frecuencia pueden estarrelacionados con la actividad simpática y parasimpática.
+#### Frecuencias bajas.
 
+En la banda de frecuencias bajas se observa una mayor magnitud en los latidos, alcanzando hasta 20 mV especialmente en las escalas de 5-15 y 20-30. Esta intensidad se mantiene relativamente constante a lo largo del tiempo con variaciones mínimas, la magnitud en estas escalas no presenta cambios bruscos y se mantiene en un rango de frecuencias específicas, lo cual sugiere estabilidad en la respuesta simpática del individuo. Las frecuencias bajas están asociadas con la actividad del sistema nervioso simpático, lo cual podría indicar que el individuo estaba en un estado de alerta o actividad moderada. Este tipo de actividad puede estar relacionado con acciones como hablar de forma animada, reír o responder con cierta rapidez, reflejando una ligera respuesta simpática.
 
+#### frecuencias altas.
 
-o
-t
+En la banda de frecuencias altas la magnitud de la señal es baja en la mayoría de las escalas (50 a 200) con valores alrededor de 5 mV. Esto indica que el ruido no afectó significativamente la señal en estas frecuencias. Sin embargo, en escalas superiores a 200, se observa una magnitud mayor, alcanzando entre 25 y 35 mV. A medida que pasa el tiempo, los cambios en la potencia de las frecuencias altas son casi nulos. Aunque hubo algunos cambios mínimos en estas frecuencias, en general la señal es estable. Las frecuencias altas están relacionadas con la actividad del sistema nervioso parasimpático, que regula la respuesta de "descanso y digestión". Dado que la magnitud en estas frecuencias es baja y los cambios en la potencia son mínimos, es probable que el sistema parasimpático no haya tenido una intervención significativa en este período de análisis.
+
+#### Conclusión general.
+
+- La estabilidad de la potencia en las frecuencias bajas sugiere una actividad simpática moderada y constante, posiblemente debido a la interacción social o la actividad física ligera.
+- La baja magnitud y la mínima variabilidad en las frecuencias altas sugieren una limitada activación del sistema parasimpático, lo que indica que el individuo no se encontraba en un estado de relajación profunda.
+
