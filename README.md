@@ -5,7 +5,7 @@ Para este laboratorio, se revisan algunos aspectos básicos como la actividad qu
 
 ## Conceptos principales para tener en cuenta.
 
-### _Actividad simpática y parasimpática del sistema nervioso autónomo (SNA)._
+### Actividad simpática y parasimpática del sistema nervioso autónomo (SNA).
 
 El sistema nervioso autónomo regula diversos procesos fisiológicos del cuerpo de forma involuntaria, es decir, sin control consciente. Este sistema recibe señales (aferencias) de diferentes áreas del sistema nervioso central, las cuales procesan estímulos provenientes tanto del cuerpo como del ambiente externo.
 
@@ -74,36 +74,71 @@ En el análisis de señales biológicas, se utilizan distintos tipos de wavelets
 
 ### Adquisición de la señal.
 
+Para la adquisición de la señal, se utilizó una placa STM32 conectada a un módulo AD8232, junto con tres electrodos ubicados estratégicamente para registrar el electrocardiograma (ECG).
+
+![image](https://github.com/user-attachments/assets/20eb4eaf-da66-40b0-93eb-27f8ff25bdc3)
+
+La señal se registró mientras el individuo permanecía sentado en una silla, con la espalda recta y en una posición relajada. Durante los 5 minutos de adquisición de datos, se sostuvo una conversación casual para ayudar a mantener un ambiente relajado, sin llegar a alterar el ritmo cardíaco y asegurando así una captura representativa del ECG en reposo.
+
+Una vez completada la adquisición, los datos se guardaron en un archivo de texto (.txt) para su posterior procesamiento. Los análisis estadísticos y espectrales se realizaron utilizando la transformada wavelet en Python, lo que permitió obtener una visión detallada de las variaciones de la señal en diferentes escalas de tiempo y frecuencia.
+
 ### Wavelet utilizada.
 
-### Señal cruda.
-características, incluyendo frecuencia de muestreo, tiempo de muestreo, niveles de cuantificación, y estadísticos principales.
+El tipo de wavelet madre utilizada para nuestra señal ECG fue **morlet**.
 
-### Señal con la wavelet escogida.
+![image](https://github.com/user-attachments/assets/6ef9120b-f2cc-4fc8-8e27-1318e5b6a2a5)
+
+Es una buena opción para analizar señales electrocardiográficas debido a su capacidad de descomponer una señal en distintas frecuencias de forma precisa y de adaptarse bien a la estructura de las señales biológicas. Esta wavelet combina una onda sinusoidal modulada por una envolvente gaussiana, lo cual permite analizar tanto la variabilidad temporal como frecuencial de la señal. Esta nos va a servir especialmente para estudiar componentes específicos como las bandas de baja frecuencia (LF) y alta frecuencia (HF), las cuales están asociadas con la actividad del sistema nervioso autónomo.
+
+Por lo tanto,  puede detectar cambios en la frecuencia de la señal con suficiente precisión y localizar eventos transitorios en el tiempo, donde se presentan complejos QRS y variaciones de la frecuencia cardíaca. Además, como puede ser una señal multiescala esta puede adaptarse para analizar detalles finos o características más globales de la señal, también permite aislar y examinar las variaciones en la frecuencia cardíaca que ocurren a distintos niveles de la señal.
+
+### Señal original.
+
+![image](https://github.com/user-attachments/assets/480ff758-4138-47a4-8be3-bd2e475748dc)
+
+El tiempo de muestreo utilizado fue de 5 minutos, lo que permitió obtener un intervalo extenso de la señal ECG. Como resultado, los latidos aparecieron muy juntos, formando una señal continua con poco espacio entre ellos. Aunque se logró identificar adecuadamente los picos R, no se observaron con claridad los demás complejos y segmentos que conforman la señal.
+
+Durante el análisis, se notó que la magnitud de la señal varió en función de la actividad del corazón. Esta variabilidad podría atribuirse a la ligera agitación que experimentó el individuo durante la charla, lo que impactó el comportamiento de los latidos.
+
+La frecuencia de muestreo utilizada fue de 165 Hz. De acuerdo con el teorema de Nyquist, para reconstruir la señal original sin pérdida de información, la frecuencia de muestreo debe ser al menos el doble de la frecuencia máxima presente en la señal. Al dividir los 99 latidos por minuto (lpm) entre 60 segundos, obtenemos una frecuencia de 1.65 Hz para la señal. Por lo tanto, se decidió multiplicar esta frecuencia por 100, resultando en una frecuencia de muestreo de 165 Hz.
 
 ### Filtro utilizado.
 
+Se utilizo un filtro pasabanda Butterworth es un tipo de filtro diseñado para permitir el paso de señales dentro de un rango de frecuencias específicas, mientras atenúa las señales fuera de ese rango.
+
 #### ¿Por qué este filtro?
+
+En el caso de las señales ECG, este filtro que opera entre 20 Hz y 450 Hz es útil debido a que las componentes de la señal ECG que son relevantes para el análisis clínico se encuentran dentro de este rango. Con la frecuencia mínima (20 Hz) se elimina el ruido de baja frecuencia que puede ser causado por movimientos corporales, interferencias electromagnéticas o la actividad muscular. Mientras que con la frecuencia máxima (450 Hz) se establece para descartar las frecuencias más altas que pueden introducir ruido y no están relacionadas con la actividad cardíaca, como las interferencias producidas por fuentes eléctricas o artefactos.
+
 #### Parámetros:
 
+**Orden del Filtro (4):** Un filtro de cuarto orden implica que la pendiente de atenuación es más pronunciada en comparación con filtros de menor orden. Esto significa que el filtro puede proporcionar una mejor atenuación fuera de la banda de paso, lo que es esencial para minimizar el ruido y mejorar la calidad de la señal filtrada, a medida que aumenta el orden del filtro la transición entre la banda pasante y la banda de atenuación se vuelve más abrupta, lo que ayuda a preservar las características importantes de la señal ECG.
 
-## Análisis en el dominio del tiempo.
+**Respuesta en Frecuencia:** Los filtros Butterworth son conocidos por su respuesta plana en la banda de paso, lo que significa que en lo posible no introducen distorsiones en las frecuencias permitidas.
 
-### Picos R de la señal.
-### Intervalos R-R.
-### Media intervalos R-R.
-### Desviación estándar.
+## Análisis en el dominio del tiempo y aplicación de transformada Wavelet.
 
-### Análisis de los parámetros en el dominio del tiempo.
+### Estadísticos principales.
 
-## Aplicación de transformada Wavelet.
+#### Picos R e intervalos, media y desviación estándar de la señal.
 
-### Espectrograma usando la transformada wavelet
+![image](https://github.com/user-attachments/assets/1a4f68e1-9ff5-431f-bd2a-801491117251)
+
+### Señal con la wavelet escogida.
+
+#### Frecuencias bajas.
+
+![image](https://github.com/user-attachments/assets/fa64bfb3-3fd2-424a-b219-0ab4764f7b2a)
+
+#### Frecuencias altas.
+
+![image](https://github.com/user-attachments/assets/86e1ce6c-56a1-42af-8807-5d3f99db4e22)
+
+
 ### Análisis en la banda de baja frecuencia y en la banda de alta frecuencia.
-describe el tipo de wavelet apropiada. Se realiza el análisis tanto en la banda de baja frecuencia como en la banda de alta frecuencia. Se describe críticamente cómo varían las frecuencias a lo largo del tiempo, detallando si hay cambios en la potencia espectral en ambos casos.
+Se realiza el análisis tanto en la banda de baja frecuencia como en la banda de alta frecuencia. Se describe críticamente cómo varían las frecuencias a lo largo del tiempo, detallando si hay cambios en la potencia espectral en ambos casos.
 
-Discutir cómo los cambios en la potencia en las bandas de baja y alta frecuencia pueden estar
-relacionados con la actividad simpática y parasimpática.
+Discutir cómo los cambios en la potencia en las bandas de baja y alta frecuencia pueden estarrelacionados con la actividad simpática y parasimpática.
 
 
 
